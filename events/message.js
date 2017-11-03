@@ -2,7 +2,7 @@ const config = require('../config.json'),
       fs = require('fs')
 
 exports.run = (client, msg) => {
-    // Checking if it is a v-bot command or a simple txt msg
+    // Checking if it is a v-bot command or a simple txt msg and if author is a bot
     if(!msg.content.startsWith(config.prefix) || msg.author.bot) return
 
     fs.readdir('../commands/', (err, files) => {
