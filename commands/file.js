@@ -1,4 +1,7 @@
+// .vue file builder
+
 const fs = require('fs')
+const paramMap = require('../commandResources/file/paramMap')
 
 exports.run = (client, msg, args) => {
     console.log('args', args[1])
@@ -8,6 +11,7 @@ exports.run = (client, msg, args) => {
         fs.readFile(__dirname + '/../tmp/file.vue', (err, data) => {
             console.log(data)
             msg.channel.sendFile(data, 'file.vue', 'Ta aí')
+            console.log('paramMap', paramMap)
         })
     })
 
