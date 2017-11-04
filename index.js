@@ -2,8 +2,7 @@
 
 const Discord = require('discord.js'),
       client = new Discord.Client(),
-      fs = require('fs'),
-      config = require('./config.json')
+      fs = require('fs')
 
 //Automating discord events to files
 fs.readdir('./events/', (err, files) => {
@@ -17,4 +16,4 @@ fs.readdir('./events/', (err, files) => {
 })
 
 //Sign in just after all that stuff
-client.login(config.token)
+client.login(process.env.token)
