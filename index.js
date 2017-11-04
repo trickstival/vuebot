@@ -15,5 +15,6 @@ fs.readdir('./events/', (err, files) => {
     })
 })
 
+console.log('env', process.env.token)
 //Sign in just after all that stuff
 client.login(process.env.token)
