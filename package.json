@@ -2,13 +2,17 @@
   "name": "vuebot",
   "version": "1.0.0",
   "description": "Um Bot para Vue.js",
-  "main": "index.js",
+  "main": "./source/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon ./source/index.js"
   },
   "author": "trickstival",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^11.2.1"
+    "discord.js": "^11.2.1",
+    "dotenv": "^4.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
   }
 }
