@@ -2,6 +2,10 @@ const Discord = require('discord.js')
 const fs = require('fs')
 const tempPath = `${__dirname}/../../tmp`
 
+/**
+ * Write vue component with argument received, file is storage in temp folder with user id,
+ * after response with file, the file is deleted
+ */
 exports.run = (bot, author, channel, args) => {
     const { id, username } = author
     fs.writeFile(`${tempPath}/${id}.vue`, args[1], err => {
@@ -9,9 +13,10 @@ exports.run = (bot, author, channel, args) => {
             throw err
 
         fs.readFile(`${tempPath}/${id}.vue`, (err, data) => {
-            channel.send('Ta aí seu componente', new Discord.Attachment(data, `file-${username}.vue`))
+            const fileAttach = new Discord.Attachment(data, `file-${username}.vue`)
+            channel.send(`<@${author.id}>, tá aí seu componente`, fileAttach)
 
-            fs.unlink(`${tempPath}/${id}.vue`)
+            fs.unlinkSync(`${tempPath}/${id}.vue`)
         })
     })
 }
