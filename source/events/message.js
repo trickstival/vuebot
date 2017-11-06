@@ -1,5 +1,6 @@
 const fs = require('fs')
 const { prefix } = process.env
+const commandsFolder = `${__dirname}/../commands`
 
 /**
  * Event called when bot detect any message in chat, check if command is valid, get all
@@ -14,12 +15,11 @@ exports.run = (client, msg) => {
 
     const args = content.split(' ')
     const command = args[0].slice(prefix.length)
-    const fileCommandExists = fs.existsSync(`./commands/${command}.js`)
+    const fileCommandExists = fs.existsSync(`${commandsFolder}/${command}.js`)
 
     if(!fileCommandExists)
         return
 
-    const commandFile = require(`../commands/${command}`)
-    
+    const commandFile = require(`${commandsFolder}/${command}`)
     commandFile.run(client, channel, args)
 }

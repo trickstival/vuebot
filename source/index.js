@@ -9,13 +9,13 @@ const fs = require('fs')
 /**
  * Get all files from events folder and register each event in discover bot with name equal filename
  */
-fs.readdir('./events/', (err, files) => {
+fs.readdir(`${__dirname}/events`, (err, files) => {
     if(err)
         throw err
 
     files.forEach(file => {
         const eventName = file.replace('.js', '')
-        const eventFunction = require(`./events/${file}`)
+        const eventFunction = require(`${__dirname}/events/${file}`)
         
         clientBot.on(eventName, (...args) => eventFunction.run(clientBot, ...args))
     })
