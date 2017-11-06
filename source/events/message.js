@@ -6,8 +6,8 @@ const commandsFolder = `${__dirname}/../commands`
  * Event called when bot detect any message in chat, check if command is valid, get all
  * params and check if exists current command file, if exists call your file
  */
-exports.run = (client, msg) => {
-    const { content, author, channel } = msg
+exports.run = (bot, message) => {
+    const { content, author, channel,  } = message
 
     const isCommand = content.startsWith(prefix) && !author.bot
     if(!isCommand)
@@ -21,5 +21,5 @@ exports.run = (client, msg) => {
         return
 
     const commandFile = require(`${commandsFolder}/${command}`)
-    commandFile.run(client, channel, args)
+    commandFile.run(bot, author, channel, args)
 }
