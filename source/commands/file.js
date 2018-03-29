@@ -14,7 +14,7 @@ exports.run = (bot, author, channel, args) => {
 
         fs.readFile(`${tempPath}/${id}.vue`, (err, data) => {
             const fileAttach = new Discord.Attachment(data, `file-${username}.vue`)
-            channel.send(`<@${author.id}>, tá aí seu componente`, fileAttach)
+            channel.send(`<@${author.id}>, here's your component`, fileAttach)
 
             fs.unlinkSync(`${tempPath}/${id}.vue`)
         })

@@ -12,7 +12,7 @@ fs.readdir('./archetypes/', (err, files) => {
 
             console.log('file putted', file)
             map.put(file, data)
-            if(files.length == i) exported()
+            if(files.length === i) exported()
             i++
         })
     })
